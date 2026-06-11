@@ -6,7 +6,7 @@ This documentation package turns the Qt dashboard into a reviewable embedded UI 
 
 | Document | Purpose |
 | --- | --- |
-| [Deep Architecture](DEEP_ARCHITECTURE.md) | Source layout, runtime model, QML component boundaries, alarm state handling, and target integration path. |
+| [Design Architecture](DESIGN_ARCHITECTURE.md) | Source layout, runtime model, QML component boundaries, alarm state handling, and target integration path. |
 | [Alarm Acknowledgement Workflow](ALARM_ACKNOWLEDGEMENT_WORKFLOW.md) | Operator behavior for Active alarms KPI, Alarm Queue tickets, acknowledge page, and post-acknowledgement state. |
 | [Digi ConnectCore Deployment](DIGI_CONNECTCORE_DEPLOYMENT.md) | Qt/Yocto toolchain setup, cross-build flow, systemd kiosk launch, platform plugin choices, and EVK smoke tests. |
 | [Validation Matrix](VALIDATION_MATRIX.md) | Host, cross-build, target, UI, service, and portfolio verification checklist. |

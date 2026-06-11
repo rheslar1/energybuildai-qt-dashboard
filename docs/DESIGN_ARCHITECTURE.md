@@ -1,8 +1,8 @@
-# Deep Architecture
+# Design Architecture
 
 ## Objective
 
-EnergyBuildAI Qt Dashboard is the embedded-native version of the BMS operations dashboard. It targets a Digi ConnectCore-class EVK or comparable ARM64 Yocto device where a Qt Quick application is a better fit than a browser dashboard.
+EnergyBuildAI Qt Dashboard is the embedded-native version of the BMS operations dashboard. It targets a Digi ConnectCore 93 EVK/DVK or comparable ARM64 Yocto device where a Qt Quick application is a better fit than a browser dashboard.
 
 The dashboard keeps the same operator concepts as the web version:
 

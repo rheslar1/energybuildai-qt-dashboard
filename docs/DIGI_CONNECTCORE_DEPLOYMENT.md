@@ -2,14 +2,15 @@
 
 ## Target
 
-The project is shaped for Digi ConnectCore-class EVKs and ARM64 Yocto images with Qt 6 support.
+The project is shaped for the Digi ConnectCore 93 EVK/DVK and ARM64 Yocto images with Qt 6 support.
 
-The requested target name is Digi ConnectCore i.MX94 EVK. Public Digi documentation currently highlights ConnectCore 95 and ConnectCore 93 Qt workflows. The app does not hard-code board-specific APIs, so the same Qt/CMake structure can be built with the matching Digi or NXP Yocto SDK for the final EVK image.
+The requested target name is Digi ConnectCore 93 EVK. Digi documentation refers to the ConnectCore 93 Development Kit and DVK in current Digi Embedded Yocto material; this project uses EVK/DVK wording so the portfolio language matches the requested hardware while staying aligned with Digi's docs.
 
 References:
 
-- Digi ConnectCore 95 product page: https://www.digi.com/products/embedded-systems/digi-connectcore/system-on-modules/digi-connectcore-95-som-nxp-i-mx-95
-- Digi ConnectCore 95 Qt install workflow: https://www.digi.com/resources/documentation/digidocs/embedded/dey/5.0/cc95/yocto-qt-install_t.html
+- Digi ConnectCore 93 documentation portal: https://www.digi.com/resources/documentation/digidocs/embedded/dey/5.0/cc93/index.html
+- Digi ConnectCore 93 Qt install workflow: https://www.digi.com/resources/documentation/digidocs/embedded/dey/5.0/cc93/yocto-qt-install_t.html
+- Digi ConnectCore 93 Qt image demo: https://docs.digi.com/resources/documentation/digidocs/embedded/dey/5.0/cc93/yocto-prebuilt-image-qt_t.html
 - Digi Embedded Yocto layers: https://github.com/digi-embedded/meta-digi
 
 ## Host Requirements

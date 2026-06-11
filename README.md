@@ -1,6 +1,6 @@
 # EnergyBuildAI Qt Dashboard
 
-Qt Quick version of the EnergyBuildAI/BMS operator dashboard for Digi ConnectCore-class Linux EVKs and other ARM64 Yocto targets.
+Qt Quick version of the EnergyBuildAI/BMS operator dashboard for the Digi ConnectCore 93 EVK/DVK and other ARM64 Yocto targets.
 
 The app mirrors the portfolio dashboard workflow:
 
@@ -12,12 +12,13 @@ The app mirrors the portfolio dashboard workflow:
 
 ## Target Notes
 
-The user target is a Digi ConnectCore i.MX94 EVK. Public Digi documentation currently exposes ConnectCore 95 and ConnectCore 93 development targets for Digi Embedded Yocto and Qt application workflows. This project is kept as a portable Qt 6/CMake application so it can be built with the matching Digi/NXP ARM64 Yocto SDK for the final EVK.
+The user target is a Digi ConnectCore 93 EVK/DVK. Digi's current ConnectCore 93 documentation covers Digi Embedded Yocto, Qt Creator development, prebuilt Qt images, and the `environment-setup-armv8a-dey-linux` SDK workflow used by this project.
 
 Useful references:
 
-- Digi ConnectCore 95 product page: https://www.digi.com/products/embedded-systems/digi-connectcore/system-on-modules/digi-connectcore-95-som-nxp-i-mx-95
-- Digi ConnectCore 95 Qt install workflow: https://www.digi.com/resources/documentation/digidocs/embedded/dey/5.0/cc95/yocto-qt-install_t.html
+- Digi ConnectCore 93 documentation portal: https://www.digi.com/resources/documentation/digidocs/embedded/dey/5.0/cc93/index.html
+- Digi ConnectCore 93 Qt install workflow: https://www.digi.com/resources/documentation/digidocs/embedded/dey/5.0/cc93/yocto-qt-install_t.html
+- Digi ConnectCore 93 Qt image demo: https://docs.digi.com/resources/documentation/digidocs/embedded/dey/5.0/cc93/yocto-prebuilt-image-qt_t.html
 - Digi Embedded Yocto layers: https://github.com/digi-embedded/meta-digi
 
 ## Repository
@@ -32,12 +33,12 @@ Portfolio mirror path:
 qt/energybuildai-dashboard/
 ```
 
-## Deep Documentation
+## Design Documentation
 
 | Document | Purpose |
 | --- | --- |
 | [docs/README.md](docs/README.md) | Documentation index and source map. |
-| [docs/DEEP_ARCHITECTURE.md](docs/DEEP_ARCHITECTURE.md) | Runtime layers, QML module boundaries, alarm state model, deployment boundary, and future live-data adapter path. |
+| [docs/DESIGN_ARCHITECTURE.md](docs/DESIGN_ARCHITECTURE.md) | Runtime layers, QML module boundaries, alarm state model, deployment boundary, and future live-data adapter path. |
 | [docs/ALARM_ACKNOWLEDGEMENT_WORKFLOW.md](docs/ALARM_ACKNOWLEDGEMENT_WORKFLOW.md) | KPI click path, Alarm Queue click path, state transitions, and regression contract. |
 | [docs/DIGI_CONNECTCORE_DEPLOYMENT.md](docs/DIGI_CONNECTCORE_DEPLOYMENT.md) | Digi/Yocto SDK build, target install, Qt platform plugin selection, systemd service, and recipe integration. |
 | [docs/VALIDATION_MATRIX.md](docs/VALIDATION_MATRIX.md) | Host, target, Yocto, and portfolio verification checklist. |
@@ -60,7 +61,7 @@ cmake --build /tmp/energybuildai-dashboard-build
 
 ## Cross-Build With Digi Embedded Yocto SDK
 
-Install the Digi Embedded Yocto SDK with Qt support for your EVK image. Digi's ConnectCore 95 documentation shows an ARM64 SDK flow that sources `environment-setup-armv8a-dey-linux` before starting Qt Creator or building Qt applications.
+Install the Digi Embedded Yocto SDK with Qt support for the ConnectCore 93 EVK/DVK image. Digi's ConnectCore 93 documentation shows an ARM64 SDK flow that sources `environment-setup-armv8a-dey-linux` before starting Qt Creator or building Qt applications.
 
 ```bash
 cd /opt/dey/5.0-r4

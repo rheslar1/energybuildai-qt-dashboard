@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21)
 
 project(EnergyBuildAIDashboard
     VERSION 1.0.0
-    DESCRIPTION "Qt Quick BMS dashboard for Digi ConnectCore-class EVKs"
+    DESCRIPTION "Qt Quick BMS dashboard for Digi ConnectCore 93 EVK/DVK"
     LANGUAGES CXX
 )
 
