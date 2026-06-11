@@ -32,6 +32,22 @@ Portfolio mirror path:
 qt/energybuildai-dashboard/
 ```
 
+## Deep Documentation
+
+| Document | Purpose |
+| --- | --- |
+| [docs/README.md](docs/README.md) | Documentation index and source map. |
+| [docs/DEEP_ARCHITECTURE.md](docs/DEEP_ARCHITECTURE.md) | Runtime layers, QML module boundaries, alarm state model, deployment boundary, and future live-data adapter path. |
+| [docs/ALARM_ACKNOWLEDGEMENT_WORKFLOW.md](docs/ALARM_ACKNOWLEDGEMENT_WORKFLOW.md) | KPI click path, Alarm Queue click path, state transitions, and regression contract. |
+| [docs/DIGI_CONNECTCORE_DEPLOYMENT.md](docs/DIGI_CONNECTCORE_DEPLOYMENT.md) | Digi/Yocto SDK build, target install, Qt platform plugin selection, systemd service, and recipe integration. |
+| [docs/VALIDATION_MATRIX.md](docs/VALIDATION_MATRIX.md) | Host, target, Yocto, and portfolio verification checklist. |
+
+Simulated view:
+
+```text
+docs/evidence/energybuildai-qt-dashboard-simulated.png
+```
+
 ## Build On A Desktop Host
 
 Install Qt 6.5 or newer with Qt Quick and Qt Quick Controls 2, then build:
