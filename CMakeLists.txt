@@ -12,13 +12,31 @@ set(CMAKE_AUTOMOC ON)
 
 include(GNUInstallDirs)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Quick QuickControls2)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Quick QuickControls2 Concurrent)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
+
 qt_add_executable(energybuildai-dashboard
     src/main.cpp
+
+    src/async/PromiseUtils.h
+    src/async/FutureBridge.h
+
+    src/domain/Alarm.h
+    src/domain/IAlarmRepository.h
+    src/domain/InMemoryAlarmRepository.h
+    src/domain/InMemoryAlarmRepository.cpp
+    src/domain/usecases/AcknowledgeAlarmUseCase.h
+    src/domain/usecases/FetchAlarmsUseCase.h
+
+    src/app/AppFacade.h
+    src/app/AppFacade.cpp
+
+    src/qml/AlarmListModel.h
+    src/qml/AlarmListModel.cpp
 )
+
 
 qt_add_qml_module(energybuildai-dashboard
     URI EnergyBuildAI
@@ -32,9 +50,12 @@ qt_add_qml_module(energybuildai-dashboard
 
 target_link_libraries(energybuildai-dashboard
     PRIVATE
+        Qt6::Core
         Qt6::Quick
         Qt6::QuickControls2
+        Qt6::Concurrent
 )
+
 
 install(TARGETS energybuildai-dashboard
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

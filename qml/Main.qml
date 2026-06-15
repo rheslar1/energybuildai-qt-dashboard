@@ -20,8 +20,24 @@ ApplicationWindow {
     property int autoClearAlarmCount: 1
 
     function selectedAlarm() {
-        return alarmModel.get(selectedAlarmIndex)
+        // QAbstractListModel roles are available as properties on the delegate,
+        // but in QML we can read by index.
+        return {
+            alarmId: alarmModel.get(selectedAlarmIndex).alarmId,
+            zone: alarmModel.get(selectedAlarmIndex).zone,
+            building: alarmModel.get(selectedAlarmIndex).building,
+            room: alarmModel.get(selectedAlarmIndex).room,
+            equipment: alarmModel.get(selectedAlarmIndex).equipment,
+            alarmType: alarmModel.get(selectedAlarmIndex).alarmType,
+            priority: alarmModel.get(selectedAlarmIndex).priority,
+            status: alarmModel.get(selectedAlarmIndex).status,
+            owner: alarmModel.get(selectedAlarmIndex).owner,
+            sla: alarmModel.get(selectedAlarmIndex).sla,
+            reading: alarmModel.get(selectedAlarmIndex).reading,
+            trend: alarmModel.get(selectedAlarmIndex).trend
+        }
     }
+
 
     function recalcAlarmCounts() {
         var active = 0
@@ -47,12 +63,10 @@ ApplicationWindow {
     function selectAlarm(index) {
         selectedAlarmIndex = index
         pageMode = "alarms"
-
-        if (alarmModel.get(index).status === "Active") {
-            alarmModel.setProperty(index, "status", "Acknowledged")
-            recalcAlarmCounts()
-        }
+        // Selecting does not auto-acknowledge anymore; it just navigates.
+        recalcAlarmCounts()
     }
+
 
     function openAcknowledgePage() {
         pageMode = "acknowledge"
@@ -66,61 +80,25 @@ ApplicationWindow {
 
     function acknowledgeSelectedAlarm() {
         if (selectedAlarm().status === "Active") {
-            alarmModel.setProperty(selectedAlarmIndex, "status", "Acknowledged")
-            recalcAlarmCounts()
+            alarmModel.acknowledgeAt(selectedAlarmIndex)
         }
     }
+
 
     Component.onCompleted: recalcAlarmCounts()
 
-    ListModel {
-        id: alarmModel
-
-        ListElement {
-            alarmId: "ALM-1042"
-            zone: "Tower B Floor 1"
-            building: "EnergyBuildAI Tower"
-            room: "Server Room / Open Office Return"
-            equipment: "VAV-TB1-14"
-            alarmType: "Demand peak"
-            priority: "High"
-            status: "Active"
-            owner: "Facilities team"
-            sla: "4 min dispatch"
-            reading: "24.1 kWh interval"
-            trend: "Rising 11% over last interval"
-        }
-
-        ListElement {
-            alarmId: "ALM-1038"
-            zone: "Floor 1 AHU"
-            building: "EnergyBuildAI Tower"
-            room: "Mechanical / AHU Closet"
-            equipment: "AHU-01"
-            alarmType: "Static pressure drift"
-            priority: "Medium"
-            status: "Acknowledged"
-            owner: "Controls technician"
-            sla: "12 min review"
-            reading: "1.9 in. w.c."
-            trend: "Stable after acknowledgement"
-        }
-
-        ListElement {
-            alarmId: "ALM-1029"
-            zone: "Lobby Lighting"
-            building: "EnergyBuildAI Tower"
-            room: "Lobby"
-            equipment: "Lighting Bus LB-01"
-            alarmType: "Schedule override"
-            priority: "Low"
-            status: "Auto-clear"
-            owner: "Facilities operator"
-            sla: "Monitor only"
-            reading: "Manual override active"
-            trend: "Clearing on next schedule pulse"
-        }
+    Connections {
+        target: alarmModel
+        function onCountChanged() { root.recalcAlarmCounts() }
+        function onBusyChanged() { root.recalcAlarmCounts() }
     }
+
+
+    AlarmListModel {
+        id: alarmModel
+        Component.onCompleted: refresh()
+    }
+
 
     Rectangle {
         id: header
